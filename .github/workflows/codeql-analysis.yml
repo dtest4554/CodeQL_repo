@@ -27,25 +27,27 @@ jobs:
                     fail-fast: false
                     matrix:
                       language: [ 'javascript' ]
-     running:     
-       for i in "${{matrix.arr}}"
-       do 
-       steps:
-                  - name: Checkout repository
-                    uses: actions/checkout@v2
-                    with:
-                      repository: dtest4554/$i
+ running: 
+ runs-on: ubuntu-latest
+ script:
+   for i in "${{matrix.arr}}";
+   do(
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+            repository: dtest4554/$i
 
-                  - name: Initialize CodeQL
-                    uses: github/codeql-action/init@v1
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
 
-                    with:
-                      languages: ${{ matrix.language }}
-                      disable-default-queries: true
-                      queries: dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/codeInAttribute.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/custom.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/findingunsafeeval.ql@main 
+        with:
+            languages: ${{ matrix.language }}
+            disable-default-queries: true
+            queries: dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/codeInAttribute.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/custom.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/findingunsafeeval.ql@main 
 
-                  - name: Autobuild
-                    uses: github/codeql-action/autobuild@v1
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v1
 
-                  - name: Perform CodeQL Analysis
-                    uses: github/codeql-action/analyze@v1
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v1
+        )
