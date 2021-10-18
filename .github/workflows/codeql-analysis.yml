@@ -17,8 +17,8 @@ jobs:
         with:
           Id: array
           script: |
-              array: ['new1','new2','new3']
-              for i in "${{array}}"
+              matrix: ['new1','new2','new3']
+              for i in "${{matrix}}"
               do 
                 - name: $i
                   runs-on: ubuntu-latest
