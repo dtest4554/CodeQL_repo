@@ -16,8 +16,9 @@ jobs:
       - uses: actions/github-script@v5
         with:
           script: |
-              matrix: ['new1','new2','new3']
-              for i in "${{matrix}}"
+              matrix: 
+                arr: ['new1','new2','new3']
+              for i in "${{matrix.arr}}"
               do 
                 - name: $i
                   runs-on: ubuntu-latest
