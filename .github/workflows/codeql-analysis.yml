@@ -37,7 +37,8 @@ jobs:
         uses: github/codeql-action/init@v1
         with:
           languages: ${{ matrix.language }}
-          config-file: /CodeQL_repo/github/codeql/codeql-config.yml
+          disable-default-queries: true
+          queries: dtest4554/CodeQL_repo/github/codeql/custom-queries/javascript/codeInAttribute.ql@main
           # If you wish to specify custom queries, you can do so here or in a config file.
           # By default, queries listed here will override any specified in a config file.
           # Prefix the list here with "+" to use these queries and those in the config file.
