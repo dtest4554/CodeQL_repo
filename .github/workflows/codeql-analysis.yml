@@ -22,7 +22,6 @@ jobs:
         fail-fast: false
         matrix:
           language: [ 'javascript' ]
-          disable-default-queries: ['true']
           # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python' ]
           # Learn more:
           # https://docs.github.com/en/free-pro-team@latest/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#changing-the-languages-that-are-analyzed
@@ -40,7 +39,8 @@ jobs:
         
         with:
           languages: ${{ matrix.language }}
-          queries: dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/codeInAttribute.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/custom.ql@main
+          disable-default-queries: true
+          queries: dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/codeInAttribute.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/custom.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/findingunsafeeval.ql@main 
           # If you wish to specify custom queries, you can do so here or in a config file.
           # By default, queries listed here will override any specified in a config file.
           # Prefix the list here with "+" to use these queries and those in the config file.
@@ -91,7 +91,8 @@ jobs:
         uses: github/codeql-action/init@v1
         with:
           languages: ${{ matrix.language }}
-          config-file: ./.github/workflows/codeql/codeql-config.yml
+          disable-default-queries: true
+          queries: dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/codeInAttribute.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/custom.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/findingunsafeeval.ql@main
           # If you wish to specify custom queries, you can do so here or in a config file.
           # By default, queries listed here will override any specified in a config file.
           # Prefix the list here with "+" to use these queries and those in the config file.
@@ -142,7 +143,8 @@ jobs:
           uses: github/codeql-action/init@v1
           with:
             languages: ${{ matrix.language }}
-            config-file: 
+            disable-default-queries: true
+            queries: dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/codeInAttribute.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/custom.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/findingunsafeeval.ql@main
             # If you wish to specify custom queries, you can do so here or in a config file.
             # By default, queries listed here will override any specified in a config file.
             # Prefix the list here with "+" to use these queries and those in the config file.
