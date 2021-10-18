@@ -40,9 +40,7 @@ jobs:
         
         with:
           languages: ${{ matrix.language }}
-          disable-default-queries: true
-          queries: dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/codeInAttribute.ql@main
-          +queries: dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/custom.ql@main
+          queries: dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/codeInAttribute.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/custom.ql@main
           # If you wish to specify custom queries, you can do so here or in a config file.
           # By default, queries listed here will override any specified in a config file.
           # Prefix the list here with "+" to use these queries and those in the config file.
@@ -144,7 +142,7 @@ jobs:
           uses: github/codeql-action/init@v1
           with:
             languages: ${{ matrix.language }}
-            config-file: /dtest4554/CodeQL_repo/github/codeql/codeql-config.yml@main
+            config-file: 
             # If you wish to specify custom queries, you can do so here or in a config file.
             # By default, queries listed here will override any specified in a config file.
             # Prefix the list here with "+" to use these queries and those in the config file.
