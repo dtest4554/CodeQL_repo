@@ -15,7 +15,6 @@ jobs:
   steps:
       - uses: actions/github-script@v5
         with:
-          Id: array
           script: |
               matrix: ['new1','new2','new3']
               for i in "${{matrix}}"
