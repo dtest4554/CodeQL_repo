@@ -22,6 +22,7 @@ jobs:
         fail-fast: false
         matrix:
           language: [ 'javascript' ]
+          disable-default-queries: ['true']
           # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python' ]
           # Learn more:
           # https://docs.github.com/en/free-pro-team@latest/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#changing-the-languages-that-are-analyzed
@@ -34,9 +35,12 @@ jobs:
 
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
+        
         uses: github/codeql-action/init@v1
+        
         with:
           languages: ${{ matrix.language }}
+          disable-default-queries: true
           queries: dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/codeInAttribute.ql@main
           +queries: dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/custom.ql@main
           # If you wish to specify custom queries, you can do so here or in a config file.
