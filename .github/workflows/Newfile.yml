@@ -7,13 +7,15 @@ on:
     branches: [ main ]
   schedule:
     - cron: '32 8 * * 0'
-
-
-
+    
 jobs:  
   Analyze:
       name: Analyze
       runs-on: ubuntu-latest
+        - Apple
+        - Orange
+        - Strawberry  
+        - Mango
       permissions:
         actions: read
         contents: read
