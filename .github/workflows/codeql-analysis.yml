@@ -26,10 +26,11 @@ jobs:
           thingsArray: ['new1','new2','new3']
           
       steps:
-      - ${{each thing in matrix.thingsArray}}
+        
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
+            test: ${{each thing in matrix.thingsArray}}
             repository: dtest4554/${{thing}}
 
         # Initializes the CodeQL tools for scanning.
