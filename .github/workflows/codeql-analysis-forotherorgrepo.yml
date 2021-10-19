@@ -13,10 +13,10 @@
 name: "CodeQL"
 on:
   push:
-    branches: [ dtest4554-patch-1 ]
+    branches: [ dtest4554-test1 ]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ dtest4554-patch-1 ]
+    branches: [ dtest4554-test1 ]
 
 jobs:  
   Analyze:
