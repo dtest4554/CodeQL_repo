@@ -30,13 +30,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
+            disable-default-queries: true
             repository: dtest4554/${{matrix.thingsArray}}
 
         # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
 
         uses: github/codeql-action/init@v1
-
+        
         with:
             disable-default-queries: true
             languages: ${{ matrix.language }}
