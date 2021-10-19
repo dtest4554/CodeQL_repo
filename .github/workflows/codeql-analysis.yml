@@ -37,12 +37,11 @@ jobs:
         
         with:
             languages: ${{ matrix.language }}
-            queries: dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/codeInAttribute.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/custom.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/findingunsafeeval.ql@main 
+            config-file: ./.github/workflows/codeql/codeql-config.yml
 
       - name: Autobuild
         uses: github/codeql-action/autobuild@v1
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
-        with: 
-              disable-default-queries: true
+
