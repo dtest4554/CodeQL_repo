@@ -1,5 +1,6 @@
 name: "CodeQL"
-
+env:
+  VALUE_ARRAY_AS_STRING: 'new1,new2,new3'
 on:
   push:
     branches: [ main ]
@@ -8,46 +9,44 @@ on:
     branches: [ main ]
   schedule:
     - cron: '32 8 * * 0'
-    
-jobs: 
- setup:
-  runs-on: ubuntu-latest
-  steps:
-   - test:
-      matrix: 
-       arr: ['new1','new2','new3']
-   - name: test
-     runs-on: ubuntu-latest
-     permissions:
-                    actions: read
-                    contents: read
-                    security-events: write
 
-     strategy:
-                    fail-fast: false
-                    matrix:
-                      language: [ 'javascript' ]
- running: 
- runs-on: ubuntu-latest
- script:
-   for i in "${{matrix.arr}}";
-   do(
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-            repository: dtest4554/$i
+jobs:
+    analyze:
+      name: Analyze
+      runs-on: ubuntu-latest
+      permissions:
+        actions: read
+        contents: read
+        security-events: write
 
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
+      strategy:
+        fail-fast: false
+        matrix:
+          language: [ 'javascript' ]
+      steps:
+      - name: loop
+        run: |
+            IFS="," read -a myarray <<< ${{ env.VALUE_ARRAY_AS_STRING }}
+            for i in "${myarray[@]}"; do
+            
+                - name: Checkout repository
+                  uses: actions/checkout@v2
+                  with:
+                    repository: dtest4554/$i
 
-        with:
-            languages: ${{ matrix.language }}
-            disable-default-queries: true
-            queries: dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/codeInAttribute.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/custom.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/findingunsafeeval.ql@main 
+                # Initializes the CodeQL tools for scanning.
+                - name: Initialize CodeQL
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v1
+                  uses: github/codeql-action/init@v1
 
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
-        )
+                  with:
+                    languages: ${{ matrix.language }}
+                    disable-default-queries: true
+                    queries: dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/codeInAttribute.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/custom.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/findingunsafeeval.ql@main 
+
+                - name: Autobuild
+                  uses: github/codeql-action/autobuild@v1
+
+                - name: Perform CodeQL Analysis
+                  uses: github/codeql-action/analyze@v1
+             done
