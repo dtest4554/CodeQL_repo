@@ -8,6 +8,11 @@ on:
   schedule:
     - cron: '32 8 * * 0'
     
+env:
+  things:
+   -'12'
+   -'34'
+    
 jobs:  
   Analyze:
       name: Analyze
@@ -25,14 +30,13 @@ jobs:
         fail-fast: false
         matrix:
           language: [ 'javascript' ]
-          thingsArray: ['new1','new2','new3']
           
       steps:
         
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-            test: ${{env.each thing in matrix.thingsArray}}
+            test: ${{ each thing in env.things }}
             repository: dtest4554/${{thing}}
 
         # Initializes the CodeQL tools for scanning.
