@@ -7,7 +7,7 @@ on:
     branches: [ main ]
   schedule:
     - cron: '32 8 * * 0'
-    
+
 env:
   things:
    -'12'
@@ -30,13 +30,14 @@ jobs:
         fail-fast: false
         matrix:
           language: [ 'javascript' ]
+          things: ['y99io', 'hnkjhk']
           
       steps:
         
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-            test: ${{ each thing in env.things }}
+            test: ${{ things }}
             repository: dtest4554/${{thing}}
 
         # Initializes the CodeQL tools for scanning.
