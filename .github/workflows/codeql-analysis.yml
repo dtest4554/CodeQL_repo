@@ -21,7 +21,7 @@ jobs:
         fail-fast: false
         matrix:
           language: [ 'javascript' ]
-          thingsArray: ['new1','new2','new3','repo4']
+          #thingsArray: ['new1','new2','new3','repo4']
           
       steps:
         
