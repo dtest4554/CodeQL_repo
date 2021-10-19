@@ -30,7 +30,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-            repository: dtest4554/${{thing}}
+            repository: dtest4554/${{thingsArray}}
 
         # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
