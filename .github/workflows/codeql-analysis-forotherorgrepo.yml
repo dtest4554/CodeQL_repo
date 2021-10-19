@@ -31,8 +31,7 @@ jobs:
         fail-fast: false
         matrix:
           language: [ 'javascript' ]
-          org: [dtest4554,demotest98] #organisation
-          reposi: [new1,new2,new3,repo4] #repositories
+          reposi: [repo4] #repositories
           # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python' ]
           # Learn more:
           # https://docs.github.com/en/free-pro-team@latest/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#changing-the-languages-that-are-analyzed
@@ -43,7 +42,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-            repository: ${{matrix.org}}/${{matrix.reposi}} #job running for each repository in each org
+            repository: demotest98/${{matrix.reposi}} #job running for each repository in each org
 
         # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
