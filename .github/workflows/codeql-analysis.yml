@@ -28,7 +28,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-            repository: dtest4554/${{matrix.thingsArray}}
+            repository: demotest98/test1
 
         # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
@@ -37,7 +37,7 @@ jobs:
         
         with:
             languages: ${{ matrix.language }}
-            config-file: .github/workflows/codeql/codeql-config.yml
+            queries: dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/codeInAttribute.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/custom.ql@main, dtest4554/CodeQL_repo/.github/workflows/codeql/custom-queries/javascript/findingunsafeeval.ql@main 
 
       - name: Autobuild
         uses: github/codeql-action/autobuild@v1
