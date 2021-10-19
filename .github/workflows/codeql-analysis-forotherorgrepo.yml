@@ -1,7 +1,7 @@
-name: "CodeQL"
+name: "CodeQL_01"
 on:
   push:
-    branches: [ main ]
+    branches: [ repo_01 ]
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ repo_01 ]
