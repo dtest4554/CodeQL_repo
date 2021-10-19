@@ -30,7 +30,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-            test: ${{env.each thing in matrix.thingsArray}}
             repository: dtest4554/${{thing}}
 
         # Initializes the CodeQL tools for scanning.
